@@ -1,12 +1,24 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "",
+  "description": "A note taking application.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Kaidan Gustave",
+  "homepage": "https://github.com/Shengaero/note-taker#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shengaero/note-taker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shengaero/note-taker/issues"
+  },
+  "keywords": [
+    "note",
+    "taker"
+  ],
   "dependencies": {
     "express": "^4.16.4"
   }
