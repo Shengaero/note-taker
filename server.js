@@ -3,8 +3,8 @@ const express = require('express');
 const database = require('./src/database');
 const routes = require('./routes');
 
-const app = express();      // our express application
-const PORT = 3001;          // port to run on
+const app = express();                      // our express application
+const PORT = process.env.PORT || 3001;      // port to run on
 
 app.use(express.json());                                        // app should use JSON
 app.use(express.urlencoded({ extended: true }));                // app should use extended URL encoding
