@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 const Note = require('./Note');
 
 const database = [];
-const databaseFilePath = path.join(process.cwd(), 'db', 'db.json');
+// const databaseFilePath = path.join(process.cwd(), 'db', 'db.json');
 
-const stringifyDatabase = () => JSON.stringify(database);
+// const stringifyDatabase = () => JSON.stringify(database) + '\n';
 
 // function to add an entry to the database
 function add(entry) {
@@ -32,33 +32,33 @@ function remove(id) {
 
 // function to save the database to the database file
 function save(onSuccess = null) {
-    fs.writeFile(databaseFilePath, stringifyDatabase(), {flag: 'w+'}, (err) => {    // write stringified JSON to the database file
-        if(err) {                                                                       // if there's an error
-            console.error(err);                                                             // log it
-        } else if(onSuccess !== null) {                                                 // otherwise, if we have on-success behavior to run
-            onSuccess();                                                                    // run it
-        }
-    });
+    // fs.writeFile(databaseFilePath, stringifyDatabase(), { flag: 'w+' }, (err) => {      // write stringified JSON to the database file
+    //     if(err) {                                                                           // if there's an error
+    //         console.error(err);                                                                 // log it
+    //     } else if(onSuccess !== null) {                                                     // otherwise, if we have on-success behavior to run
+    //         onSuccess();                                                                        // run it
+    //     }
+    // });
 }
 
 // function to load the database file into the runtime
 function load() {
-    if(!fs.existsSync(databaseFilePath)) {                                      // if the database file exists
-        console.log('Database JSON does not exist, creating now...');               // log that it will be created
-        save(() => console.log('Successfully created database file!'));             // create it and log when it's created
-    } else {                                                                    // else
-        fs.readFile(databaseFilePath, (err, data) => {                              // it does exist, so read the content from it into the database
-            if(err) {                                                                   // if there's an error
-                console.error(err);                                                         // log it
-            }
-            let loadedDatabase = JSON.parse(data);                                      // parse the loaded database
-            for(let entry of loadedDatabase) {                                          // for each entry of the loaded database
-                let note = new Note(entry.title, entry.text, entry.id);                     // create a new Note object using the stored data
-                database.push(note);                                                        // push it to the database
-            }
-            console.log(`Loaded database with ${loadedDatabase.length} entries!`);      // log that the database was loaded
-        });
-    }
+    // if(!fs.existsSync(databaseFilePath)) {                                      // if the database file exists
+    //     console.log('Database JSON does not exist, creating now...');               // log that it will be created
+    //     save(() => console.log('Successfully created database file!'));             // create it and log when it's created
+    // } else {                                                                    // else
+    //     fs.readFile(databaseFilePath, (err, data) => {                              // it does exist, so read the content from it into the database
+    //         if(err) {                                                                   // if there's an error
+    //             console.error(err);                                                         // log it
+    //         }
+    //         let loadedDatabase = JSON.parse(data);                                      // parse the loaded database
+    //         for(let entry of loadedDatabase) {                                          // for each entry of the loaded database
+    //             let note = new Note(entry.title, entry.text, entry.id);                     // create a new Note object using the stored data
+    //             database.push(note);                                                        // push it to the database
+    //         }
+    //         console.log(`Loaded database with ${loadedDatabase.length} entries!`);      // log that the database was loaded
+    //     });
+    // }
 }
 
 module.exports = {
